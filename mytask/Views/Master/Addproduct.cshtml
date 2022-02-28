@@ -1,0 +1,72 @@
+﻿
+@{ Layout = ""; }
+
+
+@{ int id = ViewBag.id;
+
+    string serialno = ViewBag.serialno;
+    string name = ViewBag.name;
+
+
+    string custname = ViewBag.custname;
+    string address = ViewBag.address;
+    string Mnumber = ViewBag.Mnumber;
+
+    int rid = ViewBag.rid;
+    int ptype = ViewBag.ptype;
+
+
+    var regionlist = new SelectList(ViewBag.regionlist, "Value", "Text", rid);
+    var ptypelist = new SelectList(ViewBag.ptypelist, "Value", "Text", ptype);
+
+
+}
+
+
+
+<div class="form-group">
+    <label>Serial No </label>
+    @Html.Hidden("id", id)
+    @Html.TextBox("serialno", serialno, new { @id = "serialno", @class = "form-control" })
+
+</div>
+
+<div class="form-group">
+    <label>Name</label>
+
+    @Html.TextBox("name", name, new { @id = "name", @class = "form-control" })
+
+</div>
+
+<div class="form-group">
+    <label>Customer Name</label>
+
+    @Html.TextBox("custname", custname, new { @id = "custname", @class = "form-control" })
+
+</div>
+<div class="form-group">
+    <label>Address</label>
+
+    @Html.TextBox("address", address, new { @id = "address", @class = "form-control" })
+
+</div>
+
+
+<div class="form-group">
+    <label>Mobile Number</label>
+
+    @Html.TextBox("Mnumber", Mnumber, new { @id = "Mnumber", @class = "form-control" })
+
+</div>
+
+<div class="form-group">
+    <label>Region</label>
+    @Html.DropDownList("regionlistid", regionlist, "Select Region", new { @id = "regionlistid", @class = "form-control" })
+    @Html.ValidationMessage(regionlist.DataTextField)
+</div>
+
+<div class="form-group">
+    <label>Product Type</label>
+    @Html.DropDownList("ptypelistid", ptypelist, "Select Product Type", new { @id = "ptypelistid", @class = "form-control" })
+    @Html.ValidationMessage(ptypelist.DataTextField)
+</div>

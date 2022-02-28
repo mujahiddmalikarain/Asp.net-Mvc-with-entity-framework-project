@@ -1,0 +1,158 @@
+﻿
+@{
+    ViewBag.Title = "Action";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<script>
+//$('#example').DataTable( {
+    //    "ajax": '../ajax/data/arrays.txt'
+    //} );
+    $(document).ready(function () {
+
+
+        $("#newproduct").click(function () {
+            $.ajax({
+                type: "Get",
+                url: "/Master/AddAction/0",
+                data: '',
+                success: function (data) {
+                    $('#Preview').html(data);
+                    $(".modal-title").text('Add');
+                    $('#myModal').modal('show');
+                }
+            })
+        });
+        $('.tablecontainer').on('click', 'a.popup', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: "Get",
+                url: $(this).attr('href'),
+                data: '',
+                success: function (data) {
+                    $('#Preview').html(data);
+                    $(".modal-title").text('update ');
+                    $('#myModal').modal('show');
+                }
+            })
+
+        });
+        $('.tablecontainer').on('click', 'a.popup1', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: "Get",
+                url: $(this).attr('href'),
+                data: '',
+                success: function (data) {
+                    alert("!Sucessfully Done");
+                    window.location.replace(window.location.href);
+                }
+            })
+
+        });
+
+
+        var exampleta = $('#example').DataTable({
+            "processing": false,
+            "serverSide": false,
+            "searching": true,
+                "ajax": {
+                    "url": "/Master/getdataAction",
+                    "type": "GET"
+            },
+
+
+
+            "columns": [
+
+                { "data": "id",  "title": "id" },
+                { "data": "name", "title": "name"},
+
+
+                {
+                    "data": "id", "width": "50px", "render": function (data) {
+                        return '<a class="popup" href="/Master/AddAction/' + data + '">Update</a>';
+                    }
+                },
+                {
+                    "data": "id", "width": "50px", "render": function (data) {
+                        return '<a class="popup1" href="/Master/DeleteAction/' + data + '">Delete</a>';
+                    }
+                }
+                ]
+
+        });
+
+
+
+        $('.tablecontainer').on('submit', '#popupFormaddsupervisor', function (e) {
+            var url = $('#popupFormaddsupervisor')[0].action;
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: $('#popupFormaddsupervisor').serialize(),
+                success: function (data) {
+                    if (data.status) {
+                        $('#myModal').modal('hide');
+                        alert("!Sucessfully Done");
+                        window.location.replace(window.location.href);
+                    }
+                }
+            });
+
+            e.preventDefault();
+        });
+
+        });</script>
+<div class="container-fluid tablecontainer">
+
+    <button type="button" id="newproduct" class="btn btn-primary" style="border-radius: 5%;">Create New </button>
+
+
+
+    @using (Html.BeginForm("AddAction", "Master", FormMethod.Post, new { id = "popupFormaddsupervisor" }))
+    {<!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Action </h4>
+                    </div>
+                    <div class="modal-body" id="Preview">
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>}
+    <br />
+
+
+
+    <br />
+    <div style="margin-top:10px" class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Action Master</h6>
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="example" width="100%" cellspacing="0">
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

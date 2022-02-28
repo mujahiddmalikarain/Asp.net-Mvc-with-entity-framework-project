@@ -1,0 +1,475 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbcontext.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Retailseller.dbo.Mst_action' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Mst_action">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Retailseller.dbo.Mst_approval' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Mst_approval">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rname" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Retailseller.dbo.Mst_callreason' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Mst_callreason">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Retailseller.dbo.Mst_product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Mst_product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="200" />
+          <Property Name="p_type" Type="int" />
+          <Property Name="cust_name" Type="varchar" MaxLength="200" />
+          <Property Name="address" Type="varchar" MaxLength="200" />
+          <Property Name="M_number" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="region" Type="int" />
+          <Property Name="s_no" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Retailseller.dbo.Mst_producttype' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Mst_producttype">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Retailseller.dbo.Mst_region' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Mst_region">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rname" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Retailseller.dbo.mstuser' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="mstuser">
+          <Property Name="userid" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="roleid" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Retailseller.dbo.userrole' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="userrole">
+          <Property Name="id" Type="int" />
+          <Property Name="role" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+        <Function Name="login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="uid" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_delete_action" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_delete_approval" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_delete_callreason" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_delete_product" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_get_allproducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_insert_Action" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_insert_approval" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_insert_Callreason" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_insert_product" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pname" Type="varchar" Mode="In" />
+          <Parameter Name="p_type" Type="int" Mode="In" />
+          <Parameter Name="custname" Type="varchar" Mode="In" />
+          <Parameter Name="address" Type="varchar" Mode="In" />
+          <Parameter Name="M_number" Type="numeric" Mode="In" />
+          <Parameter Name="region" Type="int" Mode="In" />
+          <Parameter Name="s_no" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_select_action" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_select_approval" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_select_callreason" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Update_Action" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Update_Approval" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Update_Callreason" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_update_product" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="pname" Type="varchar" Mode="In" />
+          <Parameter Name="p_type" Type="int" Mode="In" />
+          <Parameter Name="custname" Type="varchar" Mode="In" />
+          <Parameter Name="address" Type="varchar" Mode="In" />
+          <Parameter Name="M_number" Type="numeric" Mode="In" />
+          <Parameter Name="region" Type="int" Mode="In" />
+          <Parameter Name="s_no" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="dbcontextStoreContainer">
+          <EntitySet Name="Mst_action" EntityType="Self.Mst_action" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Mst_action].[id] AS [id], 
+    [Mst_action].[name] AS [name]
+    FROM [dbo].[Mst_action] AS [Mst_action]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Mst_approval" EntityType="Self.Mst_approval" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Mst_approval].[id] AS [id], 
+    [Mst_approval].[rname] AS [rname]
+    FROM [dbo].[Mst_approval] AS [Mst_approval]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Mst_callreason" EntityType="Self.Mst_callreason" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Mst_callreason].[id] AS [id], 
+    [Mst_callreason].[name] AS [name]
+    FROM [dbo].[Mst_callreason] AS [Mst_callreason]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Mst_product" EntityType="Self.Mst_product" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Mst_product].[id] AS [id], 
+    [Mst_product].[name] AS [name], 
+    [Mst_product].[p_type] AS [p_type], 
+    [Mst_product].[cust_name] AS [cust_name], 
+    [Mst_product].[address] AS [address], 
+    [Mst_product].[M_number] AS [M_number], 
+    [Mst_product].[region] AS [region], 
+    [Mst_product].[s_no] AS [s_no]
+    FROM [dbo].[Mst_product] AS [Mst_product]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Mst_producttype" EntityType="Self.Mst_producttype" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Mst_producttype].[id] AS [id], 
+    [Mst_producttype].[name] AS [name]
+    FROM [dbo].[Mst_producttype] AS [Mst_producttype]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Mst_region" EntityType="Self.Mst_region" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Mst_region].[id] AS [id], 
+    [Mst_region].[rname] AS [rname]
+    FROM [dbo].[Mst_region] AS [Mst_region]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbcontext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="dbcontext2" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="login" ReturnType="Collection(dbcontext.login_Result)">
+            <Parameter Name="uid" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_delete_action">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_delete_approval">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_delete_callreason">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_delete_product">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_get_allproducts" ReturnType="Collection(dbcontext.sp_get_allproducts_Result)" />
+          <FunctionImport Name="sp_insert_Action">
+          <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_insert_approval">
+          <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_insert_Callreason">
+          <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_insert_product">
+            <Parameter Name="pname" Mode="In" Type="String" />
+            <Parameter Name="p_type" Mode="In" Type="Int32" />
+            <Parameter Name="custname" Mode="In" Type="String" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="M_number" Mode="In" Type="Decimal" />
+            <Parameter Name="region" Mode="In" Type="Int32" />
+            <Parameter Name="s_no" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_select_action" ReturnType="Collection(dbcontext.sp_select_action_Result)" />
+          <FunctionImport Name="sp_select_approval" ReturnType="Collection(dbcontext.sp_select_approval_Result)" />
+          <FunctionImport Name="sp_select_callreason" ReturnType="Collection(dbcontext.sp_select_callreason_Result)" />
+          <FunctionImport Name="sp_Update_Action">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Update_Approval">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Update_Callreason">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_update_product">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="pname" Mode="In" Type="String" />
+            <Parameter Name="p_type" Mode="In" Type="Int32" />
+            <Parameter Name="custname" Mode="In" Type="String" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="M_number" Mode="In" Type="Decimal" />
+            <Parameter Name="region" Mode="In" Type="Int32" />
+            <Parameter Name="s_no" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Mst_action" EntityType="dbcontext.Mst_action" />
+          <EntitySet Name="Mst_approval" EntityType="dbcontext.Mst_approval" />
+          <EntitySet Name="Mst_callreason" EntityType="dbcontext.Mst_callreason" />
+          <EntitySet Name="Mst_product" EntityType="dbcontext.Mst_product" />
+          <EntitySet Name="Mst_producttype" EntityType="dbcontext.Mst_producttype" />
+          <EntitySet Name="Mst_region" EntityType="dbcontext.Mst_region" />
+        </EntityContainer>
+        <ComplexType Name="login_Result">
+          <Property Type="String" Name="userid" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="roleid" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_get_allproducts_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="producttype" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="cust_name" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="address" Nullable="true" MaxLength="200" />
+          <Property Type="Decimal" Name="M_number" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="region" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="s_no" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="sp_select_action_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="sp_select_approval_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="sp_select_callreason_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <EntityType Name="Mst_action">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Mst_approval">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Mst_callreason">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Mst_product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="p_type" Type="Int32" />
+          <Property Name="cust_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="M_number" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="region" Type="Int32" />
+          <Property Name="s_no" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Mst_producttype">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Mst_region">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbcontextStoreContainer" CdmEntityContainer="dbcontext2">
+          <FunctionImportMapping FunctionImportName="login" FunctionName="dbcontext.Store.login">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbcontext.login_Result">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="roleid" ColumnName="roleid" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_delete_action" FunctionName="dbcontext.Store.sp_delete_action" />
+          <FunctionImportMapping FunctionImportName="sp_delete_approval" FunctionName="dbcontext.Store.sp_delete_approval" />
+          <FunctionImportMapping FunctionImportName="sp_delete_callreason" FunctionName="dbcontext.Store.sp_delete_callreason" />
+          <FunctionImportMapping FunctionImportName="sp_delete_product" FunctionName="dbcontext.Store.sp_delete_product" />
+          <FunctionImportMapping FunctionImportName="sp_get_allproducts" FunctionName="dbcontext.Store.sp_get_allproducts">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbcontext.sp_get_allproducts_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="producttype" ColumnName="producttype" />
+                <ScalarProperty Name="cust_name" ColumnName="cust_name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="M_number" ColumnName="M_number" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="s_no" ColumnName="s_no" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_insert_Action" FunctionName="dbcontext.Store.sp_insert_Action" />
+          <FunctionImportMapping FunctionImportName="sp_insert_approval" FunctionName="dbcontext.Store.sp_insert_approval" />
+          <FunctionImportMapping FunctionImportName="sp_insert_Callreason" FunctionName="dbcontext.Store.sp_insert_Callreason" />
+          <FunctionImportMapping FunctionImportName="sp_insert_product" FunctionName="dbcontext.Store.sp_insert_product" />
+          <FunctionImportMapping FunctionImportName="sp_select_action" FunctionName="dbcontext.Store.sp_select_action">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbcontext.sp_select_action_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_select_approval" FunctionName="dbcontext.Store.sp_select_approval">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbcontext.sp_select_approval_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_select_callreason" FunctionName="dbcontext.Store.sp_select_callreason">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbcontext.sp_select_callreason_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Update_Action" FunctionName="dbcontext.Store.sp_Update_Action" />
+          <FunctionImportMapping FunctionImportName="sp_Update_Approval" FunctionName="dbcontext.Store.sp_Update_Approval" />
+          <FunctionImportMapping FunctionImportName="sp_Update_Callreason" FunctionName="dbcontext.Store.sp_Update_Callreason" />
+          <FunctionImportMapping FunctionImportName="sp_update_product" FunctionName="dbcontext.Store.sp_update_product" />
+          <EntitySetMapping Name="Mst_action">
+            <EntityTypeMapping TypeName="dbcontext.Mst_action">
+              <MappingFragment StoreEntitySet="Mst_action">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mst_approval">
+            <EntityTypeMapping TypeName="dbcontext.Mst_approval">
+              <MappingFragment StoreEntitySet="Mst_approval">
+                <ScalarProperty Name="rname" ColumnName="rname" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mst_callreason">
+            <EntityTypeMapping TypeName="dbcontext.Mst_callreason">
+              <MappingFragment StoreEntitySet="Mst_callreason">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mst_product">
+            <EntityTypeMapping TypeName="dbcontext.Mst_product">
+              <MappingFragment StoreEntitySet="Mst_product">
+                <ScalarProperty Name="s_no" ColumnName="s_no" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="M_number" ColumnName="M_number" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="cust_name" ColumnName="cust_name" />
+                <ScalarProperty Name="p_type" ColumnName="p_type" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mst_producttype">
+            <EntityTypeMapping TypeName="dbcontext.Mst_producttype">
+              <MappingFragment StoreEntitySet="Mst_producttype">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mst_region">
+            <EntityTypeMapping TypeName="dbcontext.Mst_region">
+              <MappingFragment StoreEntitySet="Mst_region">
+                <ScalarProperty Name="rname" ColumnName="rname" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

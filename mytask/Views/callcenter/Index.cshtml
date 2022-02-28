@@ -1,0 +1,137 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+//$('#example').DataTable( {
+    //    "ajax": '../ajax/data/arrays.txt'
+    //} );
+    $(document).ready(function () {
+
+
+        $("#newproduct").click(function () {
+            $.ajax({
+                type: "Get",
+                url: "/Master/Addproduct/0",
+                data: '',
+                success: function (data) {
+                    $('#Preview').html(data);
+                    $(".modal-title").text('Add');
+                    $('#myModal').modal('show');
+                }
+            })
+        });
+        $('.tablecontainer').on('click', 'a.popup', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: "Get",
+                url: $(this).attr('href'),
+                data: '',
+                success: function (data) {
+                    $('#Preview').html(data);
+                    $(".modal-title").text('update ');
+                    $('#myModal').modal('show');
+                }
+            })
+
+        });
+        $('.tablecontainer').on('click', 'a.popup1', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: "Get",
+                url: $(this).attr('href'),
+                data: '',
+                success: function (data) {
+                    alert("!Sucessfully Done");
+                    window.location.replace(window.location.href);
+                }
+            })
+
+        });
+
+
+        var exampleta = $('#example').DataTable({
+            "processing": false,
+            "serverSide": false,
+            "searching": true,
+                "ajax": {
+                    "url": "/callcenter/getdata",
+                    "type": "GET"
+            },
+
+
+
+            "columns": [
+
+                { "data": "id",  "title": "id" },
+                { "data": "name", "title": "name"},
+                { "data": "remarks", "title": "remarks" },
+               
+                { "data": "cust_name", "title": "Customer Name" },
+
+                { "data": "callrefno", "title": "Call Reference Number" },
+                { "data": "M_number", "title": "Mobile Number" },
+               
+                { "data": "s_no", "title": "Serial No" },
+
+                {
+                    "data": "id", "width": "50px", "render": function (data) {
+                        return '<a class="popup" href="/Master/Addproduct/' + data + '">Update</a>';
+                    }
+                },
+                {
+                    "data": "id", "width": "50px", "render": function (data) {
+                        return '<a class="popup1" href="/Master/Deleteproduct/' + data + '">Delete</a>';
+                    }
+                }
+                ]
+
+        });
+
+
+
+        $('.tablecontainer').on('submit', '#popupFormaddsupervisor', function (e) {
+            var url = $('#popupFormaddsupervisor')[0].action;
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: $('#popupFormaddsupervisor').serialize(),
+                success: function (data) {
+                    if (data.status) {
+                        $('#myModal').modal('hide');
+                        alert("!Sucessfully Done");
+                        window.location.replace(window.location.href);
+                    }
+                }
+            });
+
+            e.preventDefault();
+        });
+
+        });</script>
+<div class="container-fluid tablecontainer">
+
+    <a  href="~/callcenter/addnewcalllog" id="newproduct" class="btn btn-primary" style="border-radius: 5%;">Create New </a>
+
+
+
+
+
+
+    <br />
+    <div style="margin-top:10px" class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Products</h6>
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="example" width="100%" cellspacing="0">
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

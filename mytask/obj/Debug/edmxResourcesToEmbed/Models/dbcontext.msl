@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbcontextStoreContainer" CdmEntityContainer="dbcontext2">
+    <FunctionImportMapping FunctionImportName="login" FunctionName="dbcontext.Store.login">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbcontext.login_Result">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="roleid" ColumnName="roleid" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_delete_action" FunctionName="dbcontext.Store.sp_delete_action" />
+    <FunctionImportMapping FunctionImportName="sp_delete_approval" FunctionName="dbcontext.Store.sp_delete_approval" />
+    <FunctionImportMapping FunctionImportName="sp_delete_callreason" FunctionName="dbcontext.Store.sp_delete_callreason" />
+    <FunctionImportMapping FunctionImportName="sp_delete_product" FunctionName="dbcontext.Store.sp_delete_product" />
+    <FunctionImportMapping FunctionImportName="sp_get_allproducts" FunctionName="dbcontext.Store.sp_get_allproducts">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbcontext.sp_get_allproducts_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="producttype" ColumnName="producttype" />
+          <ScalarProperty Name="cust_name" ColumnName="cust_name" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="M_number" ColumnName="M_number" />
+          <ScalarProperty Name="region" ColumnName="region" />
+          <ScalarProperty Name="s_no" ColumnName="s_no" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_insert_Action" FunctionName="dbcontext.Store.sp_insert_Action" />
+    <FunctionImportMapping FunctionImportName="sp_insert_approval" FunctionName="dbcontext.Store.sp_insert_approval" />
+    <FunctionImportMapping FunctionImportName="sp_insert_Callreason" FunctionName="dbcontext.Store.sp_insert_Callreason" />
+    <FunctionImportMapping FunctionImportName="sp_insert_product" FunctionName="dbcontext.Store.sp_insert_product" />
+    <FunctionImportMapping FunctionImportName="sp_select_action" FunctionName="dbcontext.Store.sp_select_action">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbcontext.sp_select_action_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_select_approval" FunctionName="dbcontext.Store.sp_select_approval">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbcontext.sp_select_approval_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_select_callreason" FunctionName="dbcontext.Store.sp_select_callreason">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="dbcontext.sp_select_callreason_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Update_Action" FunctionName="dbcontext.Store.sp_Update_Action" />
+    <FunctionImportMapping FunctionImportName="sp_Update_Approval" FunctionName="dbcontext.Store.sp_Update_Approval" />
+    <FunctionImportMapping FunctionImportName="sp_Update_Callreason" FunctionName="dbcontext.Store.sp_Update_Callreason" />
+    <FunctionImportMapping FunctionImportName="sp_update_product" FunctionName="dbcontext.Store.sp_update_product" />
+    <EntitySetMapping Name="Mst_action">
+      <EntityTypeMapping TypeName="dbcontext.Mst_action">
+        <MappingFragment StoreEntitySet="Mst_action">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_approval">
+      <EntityTypeMapping TypeName="dbcontext.Mst_approval">
+        <MappingFragment StoreEntitySet="Mst_approval">
+          <ScalarProperty Name="rname" ColumnName="rname" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_callreason">
+      <EntityTypeMapping TypeName="dbcontext.Mst_callreason">
+        <MappingFragment StoreEntitySet="Mst_callreason">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_product">
+      <EntityTypeMapping TypeName="dbcontext.Mst_product">
+        <MappingFragment StoreEntitySet="Mst_product">
+          <ScalarProperty Name="s_no" ColumnName="s_no" />
+          <ScalarProperty Name="region" ColumnName="region" />
+          <ScalarProperty Name="M_number" ColumnName="M_number" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="cust_name" ColumnName="cust_name" />
+          <ScalarProperty Name="p_type" ColumnName="p_type" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_producttype">
+      <EntityTypeMapping TypeName="dbcontext.Mst_producttype">
+        <MappingFragment StoreEntitySet="Mst_producttype">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_region">
+      <EntityTypeMapping TypeName="dbcontext.Mst_region">
+        <MappingFragment StoreEntitySet="Mst_region">
+          <ScalarProperty Name="rname" ColumnName="rname" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

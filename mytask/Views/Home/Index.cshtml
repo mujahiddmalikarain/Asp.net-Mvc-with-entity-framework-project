@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@{ if (Session["roleid"].ToString() == "1")
+    {
+
+
+<h2>Call logs</h2>
+
+
+
+
+<script>
+            //$('#example').DataTable( {
+            //    "ajax": '../ajax/data/arrays.txt'
+            //} );
+            $(document).ready(function () {
+
+                var exampleta = $('#example').DataTable({
+                    "processing": false,
+                    "serverSide": false,
+                    "searching": true,
+                    "ajax": {
+                        "url": "/Home/getdata",
+                        "type": "GET"
+                    },
+
+
+
+                    "columns": [
+
+                        { "data": "id", "title": "id" },
+                        { "data": "name", "title": "name" },
+                        { "data": "remarks", "title": "remarks" },
+                       
+                        { "data": "cust_name", "title": "Customer Name" },
+
+                        { "data": "callrefno", "title": "Call Reference Number" },
+                        { "data": "M_number", "title": "Mobile Number" },
+
+                        { "data": "s_no", "title": "Serial No" },
+
+
+                    ]
+
+                });
+
+
+
+            });
+
+
+
+        </script>
+
+
+<div class="container-fluid tablecontainer">
+
+
+
+
+
+          
+
+
+
+            <br />
+            <div style="margin-top:10px" class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Call Logs</h6>
+                </div>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="example" width="100%" cellspacing="0">
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+            }
+            else
+           
+
+    {
+
+
+        <h2>Home Screen</h2>
+            }
+    }

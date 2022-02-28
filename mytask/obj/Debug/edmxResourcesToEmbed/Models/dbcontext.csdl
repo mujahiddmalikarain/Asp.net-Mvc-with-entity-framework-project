@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbcontext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="dbcontext2" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="login" ReturnType="Collection(dbcontext.login_Result)">
+      <Parameter Name="uid" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_delete_action">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_delete_approval">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_delete_callreason">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_delete_product">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_get_allproducts" ReturnType="Collection(dbcontext.sp_get_allproducts_Result)" />
+    <FunctionImport Name="sp_insert_Action">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_approval">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_Callreason">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_product">
+      <Parameter Name="pname" Mode="In" Type="String" />
+      <Parameter Name="p_type" Mode="In" Type="Int32" />
+      <Parameter Name="custname" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="M_number" Mode="In" Type="Decimal" />
+      <Parameter Name="region" Mode="In" Type="Int32" />
+      <Parameter Name="s_no" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_select_action" ReturnType="Collection(dbcontext.sp_select_action_Result)" />
+    <FunctionImport Name="sp_select_approval" ReturnType="Collection(dbcontext.sp_select_approval_Result)" />
+    <FunctionImport Name="sp_select_callreason" ReturnType="Collection(dbcontext.sp_select_callreason_Result)" />
+    <FunctionImport Name="sp_Update_Action">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Update_Approval">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Update_Callreason">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_update_product">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="pname" Mode="In" Type="String" />
+      <Parameter Name="p_type" Mode="In" Type="Int32" />
+      <Parameter Name="custname" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="M_number" Mode="In" Type="Decimal" />
+      <Parameter Name="region" Mode="In" Type="Int32" />
+      <Parameter Name="s_no" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Mst_action" EntityType="dbcontext.Mst_action" />
+    <EntitySet Name="Mst_approval" EntityType="dbcontext.Mst_approval" />
+    <EntitySet Name="Mst_callreason" EntityType="dbcontext.Mst_callreason" />
+    <EntitySet Name="Mst_product" EntityType="dbcontext.Mst_product" />
+    <EntitySet Name="Mst_producttype" EntityType="dbcontext.Mst_producttype" />
+    <EntitySet Name="Mst_region" EntityType="dbcontext.Mst_region" />
+  </EntityContainer>
+  <ComplexType Name="login_Result">
+    <Property Type="String" Name="userid" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="roleid" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_get_allproducts_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="producttype" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="cust_name" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="address" Nullable="true" MaxLength="200" />
+    <Property Type="Decimal" Name="M_number" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="String" Name="region" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="s_no" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="sp_select_action_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="sp_select_approval_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="sp_select_callreason_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <EntityType Name="Mst_action">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Mst_approval">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Mst_callreason">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Mst_product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="p_type" Type="Int32" />
+    <Property Name="cust_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="M_number" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="region" Type="Int32" />
+    <Property Name="s_no" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Mst_producttype">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Mst_region">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

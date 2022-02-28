@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "addnewcalllog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script>
+    $(document).ready(function () {
+        $('#bt').click(function () {
+
+
+            alert('hello')
+        });
+
+
+    });
+</script>
+
+
+
+
+
+
+<div class="form-group">
+    <label for="exampleInputEmail1">Serial No or Mobile Number</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Serial no or Mnumber">
+
+</div>
+<button id="bt" class="btn btn-primary">Search</button>
+
+<div class="form-group">
+    <label for="exampleInputEmail1">Product list based on customer mobile number </label>
+
+    <select id="sel" class="form-control">
+        <option value="">-- Select --</option>
+        <option value="volvo">Item1</option>
+        <option value="saab">item2</option>
+        <option value="opel">item3</option>
+        <option value="audi">item4</option>
+    </select>
+
+</div>
+
+
+
+
+<div class="form-group">
+    <label for="exampleInputEmail1">Product Details and previous call history</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Product info and previous call">
+
+</div>
+
+
+<div class="form-group">
+
+<label for="exampleInputEmail1">Please Select Call Reason </label>
+
+<select id="sel" class="form-control">
+    <option value="">-- Select --</option>
+    <option value="volvo">Callreason1</option>
+    <option value="saab">Callreason2</option>
+    <option value="opel">Callreason3</option>
+    <option value="audi">Callreason4</option>
+
+</select>
+
+</div>
+<div id="div_description" class="form-group required">
+    <label for="p_name" class="control-label col-md-2  requiredField">Remarks<span class="asteriskField">*</span> </label>
+    <div class="controls col-md-10 " style="margin-top:5px;">
+        @Html.TextArea("remarks", "", new { @class = "form-control" })
+    </div>
+</div>
+
+
+
+<div class="form-group">
+
+    <label for="exampleInputEmail1">Please Select Multiple Action </label>
+
+    
+
+    <select class="form-control" name="cars" id="cars" multiple>
+        <option value="volvo">Action1</option>
+        <option value="saab">Action2</option>
+        <option value="opel">Action3</option>
+        <option value="audi">Action4</option>
+    </select>
+
+</div>
+
+<div class="form-group">
+
+    <label for="exampleInputEmail1">Please Select Multiple Approval</label>
+
+    
+    <select class="form-control" name="cars" id="cars" multiple>
+        <option value="volvo">Approval1</option>
+        <option value="saab">Approval2</option>
+        <option value="opel">Approval3</option>
+        <option value="audi">Approval4</option>
+    </select>
+
+    <div class="modal-footer">
+
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Save</button>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+
+</div>

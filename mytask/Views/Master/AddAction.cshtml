@@ -1,0 +1,25 @@
+﻿
+
+@{ Layout = ""; }
+
+
+@{ int id = ViewBag.id;
+
+
+    string name = ViewBag.name;
+
+
+
+}
+
+
+<div class="form-group">
+    <label>Name</label>
+    @Html.Hidden("id", id)
+    @Html.TextBox("name", name, new { @id = "name", @class = "form-control" })
+
+</div>
+
+
+
+
